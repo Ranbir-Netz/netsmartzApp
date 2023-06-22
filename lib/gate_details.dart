@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:netsmartz/provider/data.dart';
+import 'package:provider/provider.dart';
 import 'models/gate_model.dart';
 
 import 'custom/text_field_custom.dart';
@@ -123,8 +125,11 @@ class _GateDetailsState extends State<GateDetails> {
                             gateName: gateName.text,
                             gateID: gateID.text,
                             managerId: managerID.text,
+                            img: "assets/images/profile.jpg",
                           );
                           newGate.printDetails();
+                          Provider.of<DataProvider>(context, listen: false)
+                              .addGate(newGate);
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),

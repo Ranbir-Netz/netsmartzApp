@@ -15,7 +15,8 @@ class EmployeeDetails extends StatefulWidget {
 
 class _EmployeeDetailsState extends State<EmployeeDetails> {
   List<String> authorizations = [];
-  List<bool> value = List.filled(5, false);
+  // int l =Provider.of<DataProvider>(context , listen: false).gates.length;
+  List<bool> value = List.filled(100, false);
   TextEditingController fname = TextEditingController();
   TextEditingController lname = TextEditingController();
   TextEditingController empID = TextEditingController();
@@ -220,14 +221,16 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                         MaterialButton(
                           onPressed: () {
                             Employee newEmployee = Employee(
-                              firstName: fname.text,
-                              lastName: lname.text,
-                              email: email.text,
-                              contact: contact.text,
-                              empID: empID.text,
-                              authorizations: authorizations,
-                            );
+                                firstName: fname.text,
+                                lastName: lname.text,
+                                email: email.text,
+                                contact: contact.text,
+                                empID: empID.text,
+                                authorizations: authorizations,
+                                img: "assets/images/profile.jpg");
                             newEmployee.printDetails();
+                            Provider.of<DataProvider>(context, listen: false)
+                                .addUser(newEmployee);
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),

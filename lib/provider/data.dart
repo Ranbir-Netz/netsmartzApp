@@ -41,4 +41,14 @@ class DataProvider extends ChangeNotifier {
     _users = jsonList.map((json) => Employee.fromJson(json)).toList();
     notifyListeners();
   }
+
+  addUser(Employee newEmployee) {
+    _users.insert(0, newEmployee);
+    notifyListeners();
+  }
+
+  addGate(Gate newGate) {
+    _gates.insert(0, newGate);
+    notifyListeners();
+  }
 }

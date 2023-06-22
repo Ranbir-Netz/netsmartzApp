@@ -30,9 +30,9 @@ class Employee {
           : null,
     );
   }
+
   void printDetails() {
-    print(
-        '''
+    print('''
 Name: $firstName
 EmpId: $empID 
 Authorizations: $authorizations''');
