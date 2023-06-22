@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 class Gate {
   String gateName;
   String gateID;
@@ -13,8 +11,18 @@ class Gate {
     this.img,
   });
 
+  factory Gate.fromJson(Map<String, dynamic> json) {
+    return Gate(
+      gateName: json['gateName'] as String,
+      gateID: json['gateID'] as String,
+      img: json['img'],
+      managerId: json['managerId'],
+    );
+  }
+
   void printDetails() {
-    print('''
+    print(
+        '''
 Gate Name: $gateName
 Gate ID: $gateID
 Manager ID: $managerId 

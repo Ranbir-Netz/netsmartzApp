@@ -1,8 +1,15 @@
+import 'dart:convert';
 import 'package:netsmartz/models/employee_model.dart';
 import 'package:netsmartz/models/gate_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' as bundle;
 
 class DataProvider extends ChangeNotifier {
+  DataProvider() {
+    getGates();
+    getUsers();
+  }
+
   int _activePage = 0;
 
   int get activePage => _activePage;
@@ -12,79 +19,26 @@ class DataProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<Gate> _offices = [
-    Gate(
-        gateID: "1a",
-        gateName: "Main Gate",
-        img: "assets/images/chandigarh.jpg"),
-    Gate(gateID: "1b", gateName: "Exit", img: "assets/images/sebiz.jpg"),
-    Gate(gateID: "2", gateName: "Break Room", img: "assets/images/noida.jpg"),
-    Gate(
-        gateID: "3", gateName: "Confidential", img: "assets/images/mohali.jpg"),
-    Gate(
-        gateID: "3b",
-        gateName: "Meeting Room",
-        img: "assets/images/gurugram.jpg")
-  ];
+  List<Gate> _gates = [];
 
-  get offices => _offices;
+  get gates => _gates;
 
-  List<Employee> _users = [
-    Employee(
-      firstName: "dob",
-      email: "1@gmail.com",
-      empID: "125",
-      img: "assets/images/download.jpeg",
-    ),
-    Employee(
-      firstName: "Bob",
-      email: "2@gmail.com",
-      empID: "2125",
-      img: "assets/images/download.jpeg",
-    ),
-    Employee(
-      firstName: "cob",
-      email: "31@gmail.com",
-      empID: "3125",
-      img: "assets/images/download.jpeg",
-    ),
-    Employee(
-      firstName: "Bob",
-      email: "41@gmail.com",
-      empID: "4125",
-      img: "assets/images/download.jpeg",
-    ),
-    Employee(
-      firstName: "Bob",
-      email: "51@gmail.com",
-      empID: "5125",
-      img: "assets/images/download.jpeg",
-    ),
-    Employee(
-      firstName: "rob",
-      email: "61@gmail.com",
-      empID: "6125",
-      img: "assets/images/download.jpeg",
-    ),
-    Employee(
-      firstName: "Bob",
-      email: "71@gmail.com",
-      empID: "7125",
-      img: "assets/images/download.jpeg",
-    ),
-    Employee(
-      firstName: "Bob",
-      email: "81@gmail.com",
-      empID: "8125",
-      img: "assets/images/download.jpeg",
-    ),
-    Employee(
-      firstName: "Bob",
-      email: "91@gmail.com",
-      empID: "9125",
-      img: "assets/images/download.jpeg",
-    ),
-  ];
+  getGates() async {
+    var rseponse =
+        await bundle.rootBundle.loadString("assets/inputs/office_inputs.json");
+    final jsonList = jsonDecode(rseponse) as List<dynamic>;
+    _gates = jsonList.map((json) => Gate.fromJson(json)).toList();
+    notifyListeners();
+  }
 
+  List<Employee> _users = [];
   get users => _users;
+
+  getUsers() async {
+    var rseponse =
+        await bundle.rootBundle.loadString("assets/inputs/user_inputs.json");
+    final jsonList = jsonDecode(rseponse) as List<dynamic>;
+    _users = jsonList.map((json) => Employee.fromJson(json)).toList();
+    notifyListeners();
+  }
 }

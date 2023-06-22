@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:netsmartz/provider/data.dart';
+import 'package:provider/provider.dart';
 import 'models/gate_model.dart';
 import 'models/employee_model.dart';
 
@@ -12,13 +14,6 @@ class EmployeeDetails extends StatefulWidget {
 }
 
 class _EmployeeDetailsState extends State<EmployeeDetails> {
-  final List<Gate> gates = [
-    Gate(gateID: "1a", gateName: "Main Gate"),
-    Gate(gateID: "1b", gateName: "Exit"),
-    Gate(gateID: "2", gateName: "Break Room"),
-    Gate(gateID: "3", gateName: "Confidential"),
-    Gate(gateID: "3b", gateName: "Meeting Room"),
-  ];
   List<String> authorizations = [];
   List<bool> value = List.filled(5, false);
   TextEditingController fname = TextEditingController();
@@ -166,53 +161,58 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                         const SizedBox(
                           height: 25,
                         ),
-                        Container(
-                          height: 190,
-                          width: 330,
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 240, 240, 240),
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.grey),
-                          ),
-                          child: ListView.builder(
-                            padding: const EdgeInsets.all(0),
-                            itemCount: gates.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Card(
-                                child: Container(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Column(
-                                    children: [
-                                      CheckboxListTile(
-                                          value: value[index],
-                                          title: Text(
-                                            gates[index].gateName,
-                                            style:
-                                                const TextStyle(fontSize: 18),
-                                          ),
-                                          activeColor: Colors.orange,
-                                          dense: true,
-                                          onChanged: (bool? val) {
-                                            if (val!) {
-                                              setState(() {
-                                                value[index] = true;
-                                                authorizations.insert(
-                                                    0, gates[index].gateID);
-                                              });
-                                            } else {
-                                              setState(() {
-                                                value[index] = false;
-                                                authorizations.remove(
-                                                    gates[index].gateID);
-                                              });
-                                            }
-                                          }),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                        Consumer<DataProvider>(
+                          builder: (context, gates, child) {
+                            List<Gate> snap = gates.gates;
+                            return Container(
+                              height: 190,
+                              width: 330,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 240, 240, 240),
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(color: Colors.grey),
+                              ),
+                              child: ListView.builder(
+                                padding: const EdgeInsets.all(0),
+                                itemCount: snap.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Card(
+                                    child: Container(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Column(
+                                        children: [
+                                          CheckboxListTile(
+                                              value: value[index],
+                                              title: Text(
+                                                snap[index].gateName,
+                                                style: const TextStyle(
+                                                    fontSize: 18),
+                                              ),
+                                              activeColor: Colors.orange,
+                                              dense: true,
+                                              onChanged: (bool? val) {
+                                                if (val!) {
+                                                  setState(() {
+                                                    value[index] = true;
+                                                    authorizations.insert(
+                                                        0, snap[index].gateID);
+                                                  });
+                                                } else {
+                                                  setState(() {
+                                                    value[index] = false;
+                                                    authorizations.remove(
+                                                        snap[index].gateID);
+                                                  });
+                                                }
+                                              }),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
                         ),
                         const SizedBox(
                           height: 30,

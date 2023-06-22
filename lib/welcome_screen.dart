@@ -33,7 +33,7 @@ class _WelcomeState extends State<Welcome> {
             ),
             Consumer<DataProvider>(
               builder: (context, data, child) {
-                List<Gate> office = data.offices;
+                List<Gate> office = data.gates;
                 return Container(
                   height: MediaQuery.of(context).size.height * .4,
                   width: MediaQuery.of(context).size.width,
@@ -47,16 +47,20 @@ class _WelcomeState extends State<Welcome> {
                         },
                         itemCount: 4,
                         itemBuilder: (context, index) {
-                          return Stack(
-                            children: [
-                              Container(
-                                height: MediaQuery.of(context).size.height * .4,
-                                width: MediaQuery.of(context).size.width,
-                                child: Image.asset(office[index].img!,
-                                    fit: BoxFit.cover),
-                              ),
-                            ],
-                          );
+                          if (office.isNotEmpty) {
+                            return Stack(
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * .4,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Image.asset(office[index].img!,
+                                      fit: BoxFit.cover),
+                                ),
+                              ],
+                            );
+                          }
+                          return CircularProgressIndicator();
                         },
                       ),
                       Positioned(

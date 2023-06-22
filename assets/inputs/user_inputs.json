@@ -1,0 +1,110 @@
+[
+    {
+        "firstName": "John",
+        "email": "john@example.com",
+        "empID": "001",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Alice",
+        "email": "alice@example.com",
+        "empID": "002",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Michael",
+        "email": "michael@example.com",
+        "empID": "003",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Sarah",
+        "email": "sarah@example.com",
+        "empID": "004",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "David",
+        "email": "david@example.com",
+        "empID": "005",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Emily",
+        "email": "emily@example.com",
+        "empID": "006",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Daniel",
+        "email": "daniel@example.com",
+        "empID": "007",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Olivia",
+        "email": "olivia@example.com",
+        "empID": "008",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Matthew",
+        "email": "matthew@example.com",
+        "empID": "009",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Sophia",
+        "email": "sophia@example.com",
+        "empID": "010",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "William",
+        "email": "william@example.com",
+        "empID": "011",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Ava",
+        "email": "ava@example.com",
+        "empID": "012",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "James",
+        "email": "james@example.com",
+        "empID": "013",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Isabella",
+        "email": "isabella@example.com",
+        "empID": "014",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Benjamin",
+        "email": "benjamin@example.com",
+        "empID": "015",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Mia",
+        "email": "mia@example.com",
+        "empID": "016",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Alexander",
+        "email": "alexander@example.com",
+        "empID": "017",
+        "img": "assets/images/download.jpeg"
+    },
+    {
+        "firstName": "Charlotte",
+        "email": "charlotte@example.com",
+        "empID": "018",
+        "img": "assets/images/download.jpeg"
+    }
+]

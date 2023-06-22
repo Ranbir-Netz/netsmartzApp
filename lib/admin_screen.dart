@@ -152,7 +152,7 @@ class _DEmoState extends State<DEmo> with TickerProviderStateMixin {
                     ),
                     Consumer<DataProvider>(
                       builder: (context, value, child) {
-                        List<Gate> office = value.offices;
+                        List<Gate> office = value.gates;
                         return Container(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
