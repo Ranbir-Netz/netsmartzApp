@@ -15,8 +15,6 @@ class EmployeeDetails extends StatefulWidget {
 
 class _EmployeeDetailsState extends State<EmployeeDetails> {
   List<String> authorizations = [];
-  // int l =Provider.of<DataProvider>(context , listen: false).gates.length;
-  List<bool> value = List.filled(100, false);
   TextEditingController fname = TextEditingController();
   TextEditingController lname = TextEditingController();
   TextEditingController empID = TextEditingController();
@@ -183,7 +181,8 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                                       child: Column(
                                         children: [
                                           CheckboxListTile(
-                                              value: value[index],
+                                              value: authorizations
+                                                  .contains(snap[index].gateID),
                                               title: Text(
                                                 snap[index].gateName,
                                                 style: const TextStyle(
@@ -192,15 +191,13 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                                               activeColor: Colors.orange,
                                               dense: true,
                                               onChanged: (bool? val) {
-                                                if (val!) {
+                                                if (val == true) {
                                                   setState(() {
-                                                    value[index] = true;
                                                     authorizations.insert(
                                                         0, snap[index].gateID);
                                                   });
                                                 } else {
                                                   setState(() {
-                                                    value[index] = false;
                                                     authorizations.remove(
                                                         snap[index].gateID);
                                                   });
