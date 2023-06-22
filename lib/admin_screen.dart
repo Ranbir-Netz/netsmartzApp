@@ -1,3 +1,4 @@
+import 'package:netsmartz/edit_employee.dart';
 import 'package:netsmartz/models/employee_model.dart';
 import 'package:netsmartz/models/gate_model.dart';
 import 'package:flutter/material.dart';
@@ -69,81 +70,119 @@ class _DEmoState extends State<DEmo> with TickerProviderStateMixin {
                               ),
                             ),
                             Expanded(
-                              child: ListView.builder(
-                                physics: BouncingScrollPhysics(),
-                                scrollDirection: Axis.vertical,
-                                itemCount: users.length,
-                                itemBuilder: (context, index) {
-                                  if (_searchController.text.isNotEmpty &&
-                                      (!users[index]
-                                              .firstName
-                                              .toLowerCase()
-                                              .contains(_searchController.text
-                                                  .toLowerCase()) &&
-                                          !users[index]
-                                              .email
-                                              .toLowerCase()
-                                              .contains(_searchController.text
-                                                  .toLowerCase()))) {
-                                    return Container(); // Return an empty container if the user doesn't match the search input
-                                  }
+                              child: Container(
+                                color: Color.fromARGB(255, 224, 224, 224),
+                                child: ListView.builder(
+                                  physics: BouncingScrollPhysics(),
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: users.length,
+                                  itemBuilder: (context, index) {
+                                    if (_searchController.text.isNotEmpty &&
+                                        (!users[index]
+                                                .firstName
+                                                .toLowerCase()
+                                                .contains(_searchController.text
+                                                    .toLowerCase()) &&
+                                            !users[index]
+                                                .email
+                                                .toLowerCase()
+                                                .contains(_searchController.text
+                                                    .toLowerCase()))) {
+                                      return Container(); // Return an empty container if the user doesn't match the search input
+                                    }
 
-                                  return Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        20, 20, 20, 5),
-                                    child: Container(
-                                      height: 100,
-                                      width: MediaQuery.of(context).size.width,
-                                      decoration: BoxDecoration(
-                                        color: Color.fromRGBO(186, 186, 186, 1),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20)),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            10, 0, 20, 0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
+                                    return Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 20, 20, 5),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    EditDetails(index: index),
+                                              ));
+                                        },
+                                        child: Container(
+                                          height: 80,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          decoration: BoxDecoration(
+                                            color: Color.fromRGBO(
+                                                255, 255, 255, 1),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(15)),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                0, 0, 20, 0),
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
-                                                CircleAvatar(
-                                                  radius: 40,
-                                                  foregroundImage: AssetImage(
-                                                      users[index].img!),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      height: 80,
+                                                      width: 80,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          15),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          15)),
+                                                          image: DecorationImage(
+                                                              fit: BoxFit
+                                                                  .fitHeight,
+                                                              image: AssetImage(
+                                                                  users[index]
+                                                                      .img!))),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 10),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                              "${users[index].empID}"),
+                                                          SizedBox(
+                                                            height: 10,
+                                                          ),
+                                                          Text(users[index]
+                                                              .firstName),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                          "${users[index].empID}"),
-                                                      SizedBox(
-                                                        height: 10,
-                                                      ),
-                                                      Text(users[index]
-                                                          .firstName),
-                                                    ],
-                                                  ),
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 15, 10, 0),
+                                                  child:
+                                                      Text(users[index].email),
                                                 ),
                                               ],
                                             ),
-                                            Text(users[index].email),
-                                          ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                },
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ],

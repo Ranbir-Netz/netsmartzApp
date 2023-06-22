@@ -7,27 +7,27 @@
     {
         "gateName" : "Gate B",
         "gateID" : "102",
-        "img" : "assets/images/sebiz.jpg"
+        "img" : "assets/images/noida.jpg"
     },
     {
         "gateName" : "Gate C",
         "gateID" : "103",
-        "img" : "assets/images/sebiz.jpg"
+        "img" : "assets/images/chandigarh.jpg"
     },
     {
         "gateName" : "Gate D",
         "gateID" : "104",
-        "img" : "assets/images/sebiz.jpg"
+        "img" : "assets/images/mohali.jpg"
     },
     {
         "gateName" : "Gate E",
         "gateID" : "105",
-        "img" : "assets/images/sebiz.jpg"
+        "img" : "assets/images/gurugram.jpg"
     },
     {
         "gateName" : "Gate F",
         "gateID" : "106",
-        "img" : "assets/images/sebiz.jpg"
+        "img" : "assets/images/noida.jpg"
     },
     {
         "gateName" : "Gate G",

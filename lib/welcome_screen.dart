@@ -26,7 +26,7 @@ class _WelcomeState extends State<Welcome> {
               width: MediaQuery.of(context).size.width,
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(50.0),
                   child: Image.asset("assets/images/logo.png"),
                 ),
               ),

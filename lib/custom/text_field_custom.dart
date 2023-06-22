@@ -6,6 +6,7 @@ class TextFieldCustom extends StatelessWidget {
   double height;
   double width;
   TextEditingController controller;
+  String? intialvalue;
 
   TextFieldCustom({
     super.key,
@@ -13,10 +14,12 @@ class TextFieldCustom extends StatelessWidget {
     required this.controller,
     required this.height,
     required this.width,
+    this.intialvalue,
   });
 
   @override
   Widget build(BuildContext context) {
+    controller.text = intialvalue ?? '';
     return SizedBox(
       width: width,
       height: height,
