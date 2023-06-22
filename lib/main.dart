@@ -1,3 +1,5 @@
+import 'package:netsmartz/gate_list.dart';
+
 import 'admin_screen.dart';
 import 'employee_details.dart';
 import 'gate_details.dart';
@@ -29,6 +31,7 @@ void main() {
           "/gate_details": (context) => const GateDetails(),
           "/": (context) => Welcome(),
           "/adminscreen": (context) => DEmo(),
+          "/gate_list": (context) => GateList(),
         },
       ),
     ),

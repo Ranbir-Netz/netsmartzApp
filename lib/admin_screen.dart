@@ -19,6 +19,8 @@ class _DEmoState extends State<DEmo> with TickerProviderStateMixin {
 
   TextEditingController _searchController = TextEditingController();
 
+  static String gateRoute = "/default";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -169,29 +171,36 @@ class _DEmoState extends State<DEmo> with TickerProviderStateMixin {
                               ),
                               itemCount: office.length,
                               itemBuilder: (context, index) {
-                                return Stack(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: AssetImage(office[index].img!),
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.bottomCenter,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          office[index].gateName,
-                                          style: TextStyle(
-                                            fontSize: 23,
-                                            fontWeight: FontWeight.w500,
+                                return GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(context, "/gate_list",
+                                        arguments: office[index].gateID);
+                                  },
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image:
+                                                AssetImage(office[index].img!),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            office[index].gateName,
+                                            style: TextStyle(
+                                              fontSize: 23,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 );
                               },
                             ),

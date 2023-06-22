@@ -19,6 +19,27 @@ class DataProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  getGateByID(String id) {
+    for (int i = 0; i < _gates.length; i++) {
+      if (_gates[i].gateID == id) {
+        return _gates[i];
+      }
+    }
+  }
+
+  getEmployeebyGateID(String id) {
+    List<Employee> employees = _users.where((user) {
+      for (int i = 0; i < user.authorizations!.length; i++) {
+        if (user.authorizations![i] == id) {
+          print(user.authorizations![i]);
+          return true;
+        }
+      }
+      return false;
+    }).toList();
+    return employees;
+  }
+
   List<Gate> _gates = [];
 
   get gates => _gates;

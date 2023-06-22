@@ -3,108 +3,127 @@
         "firstName": "John",
         "email": "john@example.com",
         "empID": "001",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["102", "107", "110"]
     },
     {
         "firstName": "Alice",
         "email": "alice@example.com",
         "empID": "002",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["101", "103", "105"]
     },
     {
         "firstName": "Michael",
         "email": "michael@example.com",
         "empID": "003",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["102", "101", "109"]
+
     },
     {
         "firstName": "Sarah",
         "email": "sarah@example.com",
         "empID": "004",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["104", "108", "110"]
     },
     {
         "firstName": "David",
         "email": "david@example.com",
         "empID": "005",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["106", "105", "101"]
     },
     {
         "firstName": "Emily",
         "email": "emily@example.com",
         "empID": "006",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["107", "108", "109"]
     },
     {
         "firstName": "Daniel",
         "email": "daniel@example.com",
         "empID": "007",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["102", "104", "106"]
     },
     {
         "firstName": "Olivia",
         "email": "olivia@example.com",
         "empID": "008",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["103", "105", "108"]
     },
     {
         "firstName": "Matthew",
         "email": "matthew@example.com",
         "empID": "009",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["110", "107", "101"]
     },
     {
         "firstName": "Sophia",
         "email": "sophia@example.com",
         "empID": "010",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["103", "102", "107"]
     },
     {
         "firstName": "William",
         "email": "william@example.com",
         "empID": "011",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["104", "105", "109"]
     },
     {
         "firstName": "Ava",
         "email": "ava@example.com",
         "empID": "012",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["101", "105", "109"]
     },
     {
         "firstName": "James",
         "email": "james@example.com",
         "empID": "013",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["110", "109", "108"]
     },
     {
         "firstName": "Isabella",
         "email": "isabella@example.com",
         "empID": "014",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["102", "106", "109"]
     },
     {
         "firstName": "Benjamin",
         "email": "benjamin@example.com",
         "empID": "015",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["101", "103", "105"]
     },
     {
         "firstName": "Mia",
         "email": "mia@example.com",
         "empID": "016",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["101", "102", "103"]
     },
     {
         "firstName": "Alexander",
         "email": "alexander@example.com",
         "empID": "017",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["104", "105", "106"]
     },
     {
         "firstName": "Charlotte",
         "email": "charlotte@example.com",
         "empID": "018",
-        "img": "assets/images/download.jpeg"
+        "img": "assets/images/download.jpeg",
+        "authorizations" : ["102", "103", "107"]
     }
 ]
