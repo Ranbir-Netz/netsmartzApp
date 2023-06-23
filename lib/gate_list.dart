@@ -28,7 +28,9 @@ class _GateListState extends State<GateList> {
         centerTitle: true,
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, "/update_gate", arguments: gateID);
+            },
             child: Icon(
               Icons.edit,
               color: Colors.white,

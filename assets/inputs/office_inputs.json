@@ -2,7 +2,8 @@
     {
         "gateName" : "Gate A",
         "gateID" : "101",
-        "img" : "assets/images/sebiz.jpg"
+        "img" : "assets/images/sebiz.jpg",
+        "managerId" : "Manager001"
     },
     {
         "gateName" : "Gate B",

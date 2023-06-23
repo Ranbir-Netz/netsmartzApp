@@ -10,6 +10,7 @@ import 'package:netsmartz/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:netsmartz/forgot.dart';
 import 'package:provider/provider.dart';
+import 'update_gate.dart';
 
 void main() {
   runApp(
@@ -32,6 +33,7 @@ void main() {
           "/": (context) => Welcome(),
           "/adminscreen": (context) => DEmo(),
           "/gate_list": (context) => GateList(),
+          "/update_gate": (context) => UpdateGate(),
         },
       ),
     ),
