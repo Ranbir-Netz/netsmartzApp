@@ -52,6 +52,15 @@ class DataProvider extends ChangeNotifier {
     _filteredGates = newFilter.reversed.toList();
   }
 
+  updateGate(Gate g, String gateId) {
+    for (int i = 0; i < _gates.length; i++) {
+      if (_gates[i].gateID == gateId) {
+        _gates[i] = g;
+        notifyListeners();
+      }
+    }
+  }
+
   getEmployeebyGateID(String id) {
     List<Employee> employees = _users.where((user) {
       for (int i = 0; i < user.authorizations!.length; i++) {

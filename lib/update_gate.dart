@@ -19,8 +19,8 @@ class _UpdateGateState extends State<UpdateGate> {
 
   @override
   Widget build(BuildContext context) {
-    Gate g = Provider.of<DataProvider>(context)
-        .getGateByID(ModalRoute.of(context)!.settings.arguments as String);
+    String id = ModalRoute.of(context)!.settings.arguments as String;
+    Gate g = Provider.of<DataProvider>(context).getGateByID(id);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       extendBodyBehindAppBar: true,
@@ -123,15 +123,29 @@ class _UpdateGateState extends State<UpdateGate> {
                       ),
                       MaterialButton(
                         onPressed: () {
+                          print("Executed");
+                          if (g.gateName != gateName.text &&
+                              gateName.text != "") {
+                            g.gateName = gateName.text;
+                          }
+                          if (g.gateID != gateID.text && gateID.text != "") {
+                            g.gateID = gateID.text;
+                          }
+                          if (g.managerId != managerID.text &&
+                              managerID.text != "") {
+                            g.managerId = managerID.text;
+                          }
                           Gate newGate = Gate(
-                            gateName: gateName.text,
-                            gateID: gateID.text,
-                            managerId: managerID.text,
-                            img: "assets/images/profile.jpg",
+                            gateName: g.gateName,
+                            gateID: g.gateID,
+                            managerId: g.managerId,
+                            img: g.img,
                           );
                           newGate.printDetails();
                           Provider.of<DataProvider>(context, listen: false)
-                              .addGate(newGate);
+                              .updateGate(newGate, id);
+                          Navigator.popAndPushNamed(context, "/gate_list",
+                              arguments: g.gateID);
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
