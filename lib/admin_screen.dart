@@ -18,8 +18,7 @@ class _DEmoState extends State<DEmo> with TickerProviderStateMixin {
   GlobalKey<ScaffoldState> _scaffold_key = GlobalKey<ScaffoldState>();
 
   TextEditingController _searchController = TextEditingController();
-
-  static String gateRoute = "/default";
+  TextEditingController _gateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +65,7 @@ class _DEmoState extends State<DEmo> with TickerProviderStateMixin {
                                 setState(() {});
                               },
                               decoration: InputDecoration(
-                                hintText: 'Search users',
+                                hintText: 'Search Users',
                                 prefixIcon: Icon(Icons.search),
                               ),
                             ),
@@ -84,6 +83,11 @@ class _DEmoState extends State<DEmo> with TickerProviderStateMixin {
                                                   .toLowerCase()) &&
                                           !users[index]
                                               .email
+                                              .toLowerCase()
+                                              .contains(_searchController.text
+                                                  .toLowerCase()) &&
+                                          !users[index]
+                                              .empID
                                               .toLowerCase()
                                               .contains(_searchController.text
                                                   .toLowerCase()))) {
@@ -154,57 +158,76 @@ class _DEmoState extends State<DEmo> with TickerProviderStateMixin {
                     ),
                     Consumer<DataProvider>(
                       builder: (context, value, child) {
-                        List<Gate> office = value.gates;
-                        return Container(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: GridView.builder(
-                              physics: BouncingScrollPhysics(),
-                              scrollDirection: Axis.vertical,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisExtent:
-                                    MediaQuery.of(context).size.height * 0.25,
-                                mainAxisSpacing: 10,
-                                crossAxisSpacing: 10,
+                        List<Gate> office = value.filteredGates;
+                        return Column(
+                          children: [
+                            TextField(
+                              controller: _gateController,
+                              onChanged: (v) {
+                                setState(() {
+                                  value.searchString = v;
+                                });
+                              },
+                              decoration: InputDecoration(
+                                hintText: 'Search Gate',
+                                prefixIcon: Icon(Icons.search),
                               ),
-                              itemCount: office.length,
-                              itemBuilder: (context, index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    Navigator.pushNamed(context, "/gate_list",
-                                        arguments: office[index].gateID);
-                                  },
-                                  child: Stack(
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image:
-                                                AssetImage(office[index].img!),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: Alignment.bottomCenter,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            office[index].gateName,
-                                            style: TextStyle(
-                                              fontSize: 23,
-                                              fontWeight: FontWeight.w500,
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GridView.builder(
+                                  physics: BouncingScrollPhysics(),
+                                  scrollDirection: Axis.vertical,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    mainAxisExtent:
+                                        MediaQuery.of(context).size.height *
+                                            0.25,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10,
+                                  ),
+                                  itemCount: office.length,
+                                  itemBuilder: (context, index) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, "/gate_list",
+                                            arguments: office[index].gateID);
+                                      },
+                                      child: Stack(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    office[index].img!),
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                          Align(
+                                            alignment: Alignment.bottomCenter,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                office[index].gateName,
+                                                style: TextStyle(
+                                                  fontSize: 23,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                );
-                              },
+                                    );
+                                  },
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         );
                       },
                     ),

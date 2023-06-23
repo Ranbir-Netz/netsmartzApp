@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Welcome_cont extends StatelessWidget {
   String text;
   Function()? onTap;
