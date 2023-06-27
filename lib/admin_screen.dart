@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'comps/drawer.dart';
 import 'provider/data.dart';
 import 'package:provider/provider.dart';
+import 'package:netsmartz/edit_employee.dart';
 
 class DEmo extends StatefulWidget {
   const DEmo({Key? key}) : super(key: key);
@@ -97,80 +98,95 @@ class _DEmoState extends State<DEmo> with TickerProviderStateMixin {
                                   return Padding(
                                     padding: const EdgeInsets.fromLTRB(
                                         20, 20, 20, 5),
-                                    child: Container(
-                                      height: 100,
-                                      width: MediaQuery.of(context).size.width,
-                                      decoration: BoxDecoration(
-                                          color:
-                                              Color.fromRGBO(226, 226, 226, 1),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20)),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Color.fromARGB(
-                                                  255, 196, 195, 195),
-                                              blurRadius: 2,
-                                              spreadRadius: 4,
-                                            ),
-                                          ]),
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            10, 0, 20, 0),
-                                        child: Row(
-                                          children: [
-                                            CircleAvatar(
-                                              radius: 40,
-                                              foregroundImage:
-                                                  AssetImage(users[index].img!),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 10),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          users[index]
-                                                              .firstName,
-                                                          style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            fontSize: 18,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EditDetails(index: index),
+                                            ));
+                                      },
+                                      child: Container(
+                                        height: 100,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        decoration: BoxDecoration(
+                                            color: Color.fromRGBO(
+                                                226, 226, 226, 1),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20)),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Color.fromARGB(
+                                                    255, 196, 195, 195),
+                                                blurRadius: 2,
+                                                spreadRadius: 4,
+                                              ),
+                                            ]),
+                                        child: Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              10, 0, 20, 0),
+                                          child: Row(
+                                            children: [
+                                              CircleAvatar(
+                                                radius: 40,
+                                                foregroundImage: AssetImage(
+                                                    users[index].img!),
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 10),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Text(
+                                                            users[index]
+                                                                .firstName,
+                                                            style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              fontSize: 18,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Text(
-                                                          "Emp. ID: ${users[index].empID}",
-                                                          style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            fontSize: 16,
+                                                          Text(
+                                                            "Emp. ID: ${users[index].empID}",
+                                                            style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontSize: 16,
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Text(
-                                                      "Email: ${users[index].email}",
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        fontSize: 16,
+                                                        ],
                                                       ),
-                                                    ),
-                                                  ],
+                                                      Text(
+                                                        "Email: ${users[index].email}",
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 16,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
